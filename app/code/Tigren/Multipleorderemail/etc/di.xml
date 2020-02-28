@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="MultipleorderemailCustomemailFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Tigren\Multipleorderemail\Api\Data\GridInterface" type="Tigren\Multipleorderemail\Model\Customemail" />
+    <virtualType name="GridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Tigren\Multipleorderemail\Model\Resource\Customemail\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MultipleorderemailCustomemailFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Tigren\Multipleorderemail\Model\ResourceModel\Customemail\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mb_multipleorderemail</argument>
+            <argument name="resourceModel" xsi:type="string">Tigren\Multipleorderemail\Model\ResourceModel\Customemail</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="multipleorderemail_customemail_listing_data_source" xsi:type="string">Tigren\Multipleorderemail\Model\ResourceModel\Customemail\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\Sales\Model\Order\Email\Container\OrderIdentity" type="Tigren\Multipleorderemail\Model\Order\Email\Container\OrderIdentity"/>
+    <preference for="Magento\Sales\Model\Order\Email\Container\InvoiceIdentity" type="Tigren\Multipleorderemail\Model\Order\Email\Container\InvoiceIdentity"/>
+    <preference for="Magento\Sales\Model\Order\Email\Container\ShipmentIdentity" type="Tigren\Multipleorderemail\Model\Order\Email\Container\ShipmentIdentity"/>
+    <preference for="Magento\Framework\Serialize\Serializer\Json" type="Tigren\Multipleorderemail\Serialize\Serializer\Json"/>
+
+</config>

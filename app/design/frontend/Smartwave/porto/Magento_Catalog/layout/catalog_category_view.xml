@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2018 Porto. All rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<move element="cat.search" destination="page.top" before="category_banner"/>
+        <referenceContainer name="page.top">
+			 <block class="Magento\Framework\View\Element\Template" name="cat.search" template="Magento_Search::form.mini.phtml"/>
+             <block class="Magento\Catalog\Block\Category\View" name="category_banner" template="category/banner.phtml" ifconfig="porto_settings/category/category_description" before="-"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+			<block class="Magento\Catalog\Block\Category\View" name="category_desc_main_column" template="category/desc_main_column.phtml" ifconfig="porto_settings/category/category_description" before="category.products"/>
+        </referenceContainer>
+        <move element="category.image" destination="content" before="category_desc_main_column"/>
+        <referenceContainer name="sidebar.main">
+            <block class="Smartwave\Porto\Block\Template" name="category_view_custom_block" after="-" template="Magento_Catalog::category/custom_block.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="columns">
+            <container name="full_sec" htmlTag="div" htmlClass="full-sec sec-padding" >
+                <container name="columns.main" htmlTag="div" htmlClass="container" before="-" >
+                    <container name="columns.sidebar" htmlTag="div" htmlClass="sidebar sidebar-main" before="-" />
+                </container>
+            </container>
+        </referenceContainer>
+        <move element="sidebar.main" destination="columns.sidebar" />
+        <move element="sidebar.additional" destination="columns.sidebar" />
+        <move element="main" destination="columns.main" />
+        <move element="page.main.title" destination="columns.main" before="-"/>
+    </body>
+</page>

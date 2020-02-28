@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.tigren.com
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tigren" translate="label" sortOrder="9000">
+            <label>Tigren</label>
+        </tab>
+        <section id="multipleorderemail" translate="label" sortOrder="70" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Multiple Order Email</label>
+            <tab>tigren</tab>
+            <resource>Tigren_Multipleorderemail::config_multipleorderemail</resource>
+            <group id="mainpage" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General Settings</label>
+                <field id="send_mail_to_admin" translate="label" type="select" sortOrder="0" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable to send email Notification to Admin when having new Order/Invoice/Shipment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="admin_default_sender" translate="label" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Admin Email Address Received Notification</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

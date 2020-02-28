@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="top.links">
+            <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">My Account</argument>
+                    <argument name="sortOrder" xsi:type="number">110</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link"
+                   template="Magento_Customer::account/link/authorization.phtml"/>
+        </referenceBlock>
+        <move element="top.links" destination="customer"/>
+        
+
+        <referenceBlock name="header.links">
+            <block class="Magento\Customer\Block\Account\Customer" name="customer" template="account/customer.phtml" before="-"/>
+            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-login" template="account/link/authorization.phtml"/>
+        </referenceBlock>
+        <block class="Magento\Theme\Block\Html\Header" name="header" as="header">
+            <arguments>
+                <argument name="show_part" xsi:type="string">welcome</argument>
+            </arguments>
+        </block>
+        <referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true"/>
+
+        <!-- <move element="register-link" destination="header.links" before="authorization-link-login"/>
+        <move element="header" destination="header.links" after="register-link"/> -->
+        <!-- <move element="register-link" destination="header.links"/>
+        <move element="top.links" destination="customer"/>
+        <move element="authorization-link" destination="top.links" after="-"/> -->
+        
+    </body>
+</page>

@@ -1,0 +1,17 @@
+<?xml version ="1.0"?>
+<!--
+/**
+ * @copyright Copyright (c) 2016 www.tigren.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <multipleorderemail>
+            <mainpage>
+                <send_mail_to_admin>1</send_mail_to_admin>
+                <admin_default_sender></admin_default_sender>
+            </mainpage>
+        </multipleorderemail>
+    </default>
+</config>

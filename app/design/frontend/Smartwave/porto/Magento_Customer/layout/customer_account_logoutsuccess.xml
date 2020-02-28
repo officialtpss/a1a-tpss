@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument name="title" translate="true" xsi:type="string">You are signed out</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="customer_logout" template="Magento_Customer::logout.phtml"/>
+        </referenceContainer>
+        
+        <referenceContainer name="columns">
+            <container name="full_sec" htmlTag="div" htmlClass="full-sec sec-padding" >
+                <container name="container" htmlTag="div" htmlClass="container" />
+            </container>
+        </referenceContainer>
+        <move element="page.main.title" destination="container" before="-"/>
+        <move element="main" destination="container" before="-"/>
+    </body>
+</page>

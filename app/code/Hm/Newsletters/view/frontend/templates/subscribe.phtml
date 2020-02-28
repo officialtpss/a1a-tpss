@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Newsletter\Block\Subscribe $block */
+
+?>
+<div class="block newsletter">
+    <div class="title"><strong><?php /* @escapeNotVerified */ echo __('Newsletter') ?></strong></div>
+    <div class="content">
+        <form class="form subscribe" novalidate
+              action="http://192.168.0.75/learning/test/newsletter/subscriber/new/"
+              method="post"
+              data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+              id="newsletter-validate-detail">
+            <div class="field firstname">
+                <label class="label" for="firstname"><span><?php echo $block->escapeHtml(__('Firstname')) ?></span></label>
+                <div class="control">
+                    <input name="firstname" type="text" id="firstname" placeholder="<?php echo $block->escapeHtml(__('Vorname')) ?>" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field lastname">
+                <label class="label" for="lastname"><span><?php echo $block->escapeHtml(__('lastname')) ?></span></label>
+                <div class="control">
+                    <input name="lastname" type="text" id="lastname" placeholder="<?php echo $block->escapeHtml(__('Nachname')) ?>" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field newsletter">
+                <label class="label" for="newsletter"><span><?php echo $block->escapeHtml(__('Email:')) ?></span></label>
+                <div class="control">
+                    <input name="email" type="email" id="newsletter" placeholder="<?php echo $block->escapeHtml(__('Mailadresse')) ?>" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="action subscribe primary" title="<?php echo $block->escapeHtml(__('submit')) ?>" type="submit">
+                    <span><?php echo $block->escapeHtml(__('submit')) ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

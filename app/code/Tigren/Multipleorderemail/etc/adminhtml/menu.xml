@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.tigren.com
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_Multipleorderemail::multipleorderemail" title="Multiple Order Email"
+             module="Tigren_Multipleorderemail" sortOrder="50"
+             resource="Tigren_Multipleorderemail::multipleorderemail"/>
+        <add id="Tigren_Multipleorderemail::customemail" title="Multiple Order Email"
+             module="Tigren_Multipleorderemail" sortOrder="20"
+             parent="Tigren_Multipleorderemail::multipleorderemail" action="multipleorderemail/customemail"
+             resource="Tigren_Multipleorderemail::customemail"/>
+        <add id="Tigren_Multipleorderemail::setting" title="Settings" module="Tigren_Multipleorderemail"
+             sortOrder="30" parent="Tigren_Multipleorderemail::multipleorderemail"
+             action="adminhtml/system_config/edit/section/multipleorderemail"
+             resource="Tigren_Multipleorderemail::setting"/>
+    </menu>
+</config>
